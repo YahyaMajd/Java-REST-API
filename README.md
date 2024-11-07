@@ -12,7 +12,7 @@ A simple REST API built with Spring Boot for managing employee data, supporting 
 
 ## Technologies
 
-- Java, Spring Boot, Spring Data JPA, H2 Database (in-memory), Maven
+- Java, Spring Boot, Spring Data JPA, H2 Database (in-memory), Maven, Docker
 
 ## Setup
 
@@ -22,13 +22,52 @@ A simple REST API built with Spring Boot for managing employee data, supporting 
    cd Java-REST-API
    ```
 
-2. **Build and Run**:
+2. **Build and Run Locally**:
    ```bash
    ./mvnw clean install
    ./mvnw spring-boot:run
    ```
-
    Runs at `http://localhost:8080`.
+
+## Using Docker
+
+You can also run this application in a Docker container.
+
+### Build the Docker Image
+
+In the project’s root directory, where the Dockerfile is located, build the Docker image:
+
+```bash
+docker build -t employee-management-api .
+```
+
+### Run the Docker Container
+
+After building the image, start a Docker container, mapping port 8080 of the container to port 8080 on your local machine:
+
+```bash
+docker run -p 8080:8080 employee-management-api
+```
+
+The application should now be accessible at `http://localhost:8080`.
+
+### Stop the Container
+
+To stop the container, first find the container ID:
+
+```bash
+docker ps
+```
+
+Then stop it with:
+
+```bash
+docker stop <container_id>
+```
+
+### Docker Desktop
+
+If you’re using Docker Desktop, you can manage the container from the **Containers / Apps** tab, where you can start, stop, and view logs for the container.
 
 ## API Endpoints
 
